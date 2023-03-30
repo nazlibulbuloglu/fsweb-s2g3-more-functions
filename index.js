@@ -16,9 +16,15 @@
   örnek output: ""
 */
 
-function dosyaAdiniBul(/* kodlar buraya */) {
-  // kodlar buraya
+function dosyaAdiniBul(dosyaYolu) {
+  const parcalar = dosyaYolu.split("/");
+  const dosyaAdi = parcalar[parcalar.length - 1];
+  return dosyaAdi;
 }
+dosyaAdiniBul("C:/Users/johnsmith/Music/Beethoven_5.mp3"); 
+dosyaAdiniBul("Beethoven_5.mp3"); 
+dosyaAdiniBul(""); 
+
 
 /*
   GÖREV 2
@@ -38,9 +44,27 @@ function dosyaAdiniBul(/* kodlar buraya */) {
   örnek output: 104
 */
 
-function ortalamaBul(/* kodlar buraya */) {
-  // kodlar buraya
+function ortalamaBul(sayilar) {
+  if (sayilar.length === 0) {
+    return null;
+  }
+
+  let toplam = 0;
+  for (let i = 0; i < sayilar.length; i++) {
+    toplam += sayilar[i];
+  }
+
+  const adet = sayilar.length;
+  const ortalama = toplam / adet;
+
+  return ortalama;
 }
+
+console.log(ortalamaBul([])); 
+console.log(ortalamaBul([4])); 
+console.log(ortalamaBul([50, -26, 153, 7]));
+console.log(ortalamaBul([109, 216, 288, 143, 71, 185, -278, 194, 5])); 
+
 
 /*
   GÖREV 3
@@ -62,9 +86,30 @@ function ortalamaBul(/* kodlar buraya */) {
   örnek output: [109, 216, 288, 143, 185, 194]
 */
 
-function ortalamadanBuyukleriBul(/* kodlar buraya */) {
-  // kodlar buraya
-}
+function ortalamadanBuyukleriBul(sayilar, ortalamaFonksiyonu) {
+  if (sayilar.length === 0) {
+  return null;
+  }
+  
+  const ortalama = ortalamaFonksiyonu(sayilar);
+  const buyukler = [];
+  
+  for (let i = 0; i < sayilar.length; i++) {
+  if (sayilar[i] >= ortalama) {
+  buyukler.push(sayilar[i]);
+  }
+  }
+  
+  return buyukler;
+  }
+
+  const sayilar = [50, -26, 153, 7];
+  const ortalama = ortalamaBul(sayilar);
+  const buyukler = ortalamadanBuyukleriBul(sayilar, ortalamaBul);
+
+console.log(`Sayilar: ${sayilar}`);
+console.log(`Ortalama: ${ortalama}`);
+console.log(`Ortalama üzeri sayilar: ${buyukler}`);
 
 /* !!!! Burdan aşağısını değiştirmeyin !!!! */
 function as() {
